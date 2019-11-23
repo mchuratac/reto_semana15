@@ -1,0 +1,57 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Listar Locales
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h3 class="one">&nbsp;</h3>
+        </div>
+        <div class="col-autor">
+            <a class="btn btn-primary pull-right" href="{% url 'cinema:crear_local' %}">
+                <i class="fa fa-add"></i>Crear Local
+            </a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>TipoServicio</th>
+            <th>PrecioBoleto</th>
+            <th>Distrito</th>
+            <th>ImagenL</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for local in locales %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ local.nombre }}</td>
+                <td>{{ local.Direccion }}</td>
+                <td>{{ local.TipoServicio }}</td>
+                <td>{{ local.PrecioBoleto }}</td>
+                <td>{{ local.Distrito }}</td>                
+                <td>
+                    <a href="{{ local.ImagenL.url }}" target="_blank">Imagen</a>
+                    <img src="{{ local.ImagenL.url }}" href="{{ local.ImagenL.url }}" class="card-img-top mt-2" alt="">
+                </td>
+                <td>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                        <a href="{% url 'cinema:editar_local' local.id %}" class="btn btn-warning">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="{% url 'cinema:eliminar_local' local.id %}" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

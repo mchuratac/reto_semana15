@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Listar Vehiculos
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h3 class="one">&nbsp;</h3>
+        </div>
+        <div class="col-autor">
+            <a class="btn btn-primary pull-right" href="{% url 'taxi:crear_vehiculo' %}">
+                <i class="fa fa-add"></i>Crear Vehiculo
+            </a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>usuario</th>
+            <th>descripcion</th>
+            <th>estado</th>
+       
+        </tr>
+        </thead>
+        <tbody>
+        {% for vehiculo in Vehiculos %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ vehiculo.usuario }}</td>
+                <td>{{ vehiculo.descripcion }}</td>
+                <td>{{ vehiculo.estado }}</td>
+                
+                <td>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                        <a href="{% url 'taxi:editar_vehiculo' vehiculo.id %}" class="btn btn-warning">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="{% url 'taxi:eliminar_vehiculo' vehiculo.id %}" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

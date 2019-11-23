@@ -1,0 +1,48 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Listar Actores
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h3 class="one">&nbsp;</h3>
+        </div>
+        <div class="col-autor">
+            <a class="btn btn-primary pull-right" href="{% url 'cinema:crear_actor' %}">
+                <i class="fa fa-add"></i>Crear Autor
+            </a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombres</th>
+            <th>Imagen</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for actor in actores %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ actor.nombres }}</td>
+                <td><a href="{{ actor.imagenA.url }}" target="_blank">Imagen</a>
+                <img src="{{ actor.imagenA.url }}" href="{{ actor.imagenA.url }}" width="50px" height="300px" class="card-img-top mt-2" alt="">
+                </td>
+                <td>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                        <a href="{% url 'cinema:editar_actor' actor.id %}" class="btn btn-warning">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="{% url 'cinema:eliminar_actor' actor.id %}" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

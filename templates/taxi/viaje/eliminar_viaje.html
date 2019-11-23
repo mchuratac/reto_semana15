@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Eliminar Local
+{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <h2>¿Deseas eliminar el Local {{ local.nombre }}?</h2>
+        <button class="btn btn-primary" type="submit">Eliminar</button>
+        <a class="btn btn-danger" href="{% url 'cinema:listar_locales' %}">Cancelar</a>
+    </form>
+{% endblock %}

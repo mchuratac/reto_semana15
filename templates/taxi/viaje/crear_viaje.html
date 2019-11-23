@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Crear Local
+{% endblock %}
+
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="{% static 'static/avatar/default-avatar.jpg' %}?version={% now "U" %}" class="rounded float-left avatar mb-4" alt="">
+                {{ form.avatar }}
+            </div>
+            <div class="col-sm-9">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form.nombre.label }}</label>
+                        <div class="col-sm-10">{{ form.nombre }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form.Direccion.label }}</label>
+                        <div class="col-sm-10">{{ form.Direccion }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form.TipoServicio.label }}</label>
+                        <div class="col-sm-10">{{ form.TipoServicio }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form.PrecioBoleto.label }}</label>
+                        <div class="col-sm-10">{{ form.PrecioBoleto }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form.Distrito.label }}</label>
+                        <div class="col-sm-10">{{ form.Distrito }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form.ImagenL.label }}</label>
+                        <div class="col-sm-10">{{ form.ImagenL }}</div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Crear</button>
+                    <a class="btn btn-danger" href="{% url 'cinema:listar_locales' %}">Cancelar</a>
+            </div>
+        </div>
+    </form>
+{% endblock %}
