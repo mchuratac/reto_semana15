@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from apps.taxi.views import Home
+from django.conf.urls.static import static
+from django.conf import settings
+
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
+from apps.taxi.views import Home
 from apps.authentication.views import Login
 
 urlpatterns = [
@@ -24,5 +28,5 @@ urlpatterns = [
     path('', Home.as_view(), name = 'index'),
     path('taxi/', include (('apps.taxi.urls', 'taxi'))),
     path('logout/',auth_views.LogoutView.as_view(), name = 'logout'),
-    path('login/', Login.as_view(), name = 'login')
+    path('login/', Login.as_view(), name = 'login'),
 ]

@@ -1,14 +1,14 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Eliminar Actor
+    Eliminar Destinos Favoritos
 {% endblock %}
 
 {% block content %}
     <form method="POST">
         {% csrf_token %}
-        <h2>¿Deseas eliminar el actor {{ actor.nombres }}?</h2>
+        <h2>¿Deseas eliminar el destino favorito {{ destinofavorito.descripcion }}?</h2>
         <button class="btn btn-primary" type="submit">Eliminar</button>
-        <a class="btn btn-danger" href="{% url 'cinema:listar_actores' %}">Cancelar</a>
+        <a class="btn btn-danger" href="{% url 'taxi:listar_destinosfavoritos' %}">Cancelar</a>
     </form>
 {% endblock %}

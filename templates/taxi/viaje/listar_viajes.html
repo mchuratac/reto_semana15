@@ -1,7 +1,7 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Listar Locales
+    Listar Viajes
 {% endblock %}
 
 {% block content %}
@@ -10,8 +10,8 @@
             <h3 class="one">&nbsp;</h3>
         </div>
         <div class="col-autor">
-            <a class="btn btn-primary pull-right" href="{% url 'cinema:crear_local' %}">
-                <i class="fa fa-add"></i>Crear Local
+            <a class="btn btn-primary pull-right" href="{% url 'taxi:crear_viaje' %}">
+                <i class="fa fa-add"></i>Crear Viaje
             </a>
         </div>
     </div>
@@ -19,33 +19,37 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Nombre</th>
-            <th>Direccion</th>
-            <th>TipoServicio</th>
-            <th>PrecioBoleto</th>
-            <th>Distrito</th>
-            <th>ImagenL</th>
+            <th>PASAJERO</th>
+            <th>ORIGEN</th>
+            <th>DESTINO</th>
+            <th>FECHA_REGISTRO</th>
+            <th>FECHA_INICIO</th>
+            <th>FECHA_FIN</th>
+            <th>CONDUCTOR</th>
+            <th>PUNTAJE</th>
+            <th>ESTADO</th>
         </tr>
         </thead>
         <tbody>
-        {% for local in locales %}
+        {% for viaje in viajes %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>{{ local.nombre }}</td>
-                <td>{{ local.Direccion }}</td>
-                <td>{{ local.TipoServicio }}</td>
-                <td>{{ local.PrecioBoleto }}</td>
-                <td>{{ local.Distrito }}</td>                
-                <td>
-                    <a href="{{ local.ImagenL.url }}" target="_blank">Imagen</a>
-                    <img src="{{ local.ImagenL.url }}" href="{{ local.ImagenL.url }}" class="card-img-top mt-2" alt="">
-                </td>
+                <td>{{ viaje.pasajero }}</td>
+                <td>{{ viaje.origen }}</td>
+                <td>{{ viaje.destino }}</td>
+                <td>{{ viaje.fecha_registro }}</td>       
+                <td>{{ viaje.fecha_inicio }}</td>  
+                <td>{{ viaje.fecha_fin }}</td>  
+                <td>{{ viaje.conductor }}</td>  
+                <td>{{ viaje.puntaje }}</td> 
+                <td>{{ viaje.estado }}</td> 
+
                 <td>
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="{% url 'cinema:editar_local' local.id %}" class="btn btn-warning">
+                        <a href="{% url 'taxi:editar_viaje' viaje.id %}" class="btn btn-warning">
                             <i class="fa fa-edit"></i>
                         </a>
-                        <a href="{% url 'cinema:eliminar_local' local.id %}" class="btn btn-danger">
+                        <a href="{% url 'taxi:eliminar_viaje' viaje.id %}" class="btn btn-danger">
                             <i class="fa fa-trash"></i>
                         </a>
                     </div>

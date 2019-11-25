@@ -1,17 +1,17 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Listar Locales
+    Listar Vehiculos
 {% endblock %}
 
 {% block content %}
     <div class="row">
-        {% for local in locales %}
+        {% for vehiculo in vehiculos %}
             <div class="col-4 mb-4">
                 <div class="card card-center">
                     <img src="{{ local.ImagenL.url }}" class="card-img-top mt-2" alt="">
                     <div class="card-body">
-                        <p class="card-text">{{ local.nombre }}</p>
+                        <p class="card-text">{{ vehiculo.descripcion }}</p>
                     </div>
                 </div>
             </div>

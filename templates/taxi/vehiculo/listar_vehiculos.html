@@ -19,14 +19,14 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>usuario</th>
-            <th>descripcion</th>
-            <th>estado</th>
+            <th>USUARIO</th>
+            <th>DESCRIPCION</th>
+            <th>ESTADO</th>
        
         </tr>
         </thead>
         <tbody>
-        {% for vehiculo in Vehiculos %}
+        {% for vehiculo in vehiculos %}
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ vehiculo.usuario }}</td>
@@ -34,14 +34,8 @@
                 <td>{{ vehiculo.estado }}</td>
                 
                 <td>
-                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="{% url 'taxi:editar_vehiculo' vehiculo.id %}" class="btn btn-warning">
-                            <i class="fa fa-edit"></i>
-                        </a>
-                        <a href="{% url 'taxi:eliminar_vehiculo' vehiculo.id %}" class="btn btn-danger">
-                            <i class="fa fa-trash"></i>
-                        </a>
-                    </div>
+                    <a class="btn btn-primary" href="/taxi/editar_vehiculo/{{vehiculo.id}}">Editar</a>
+                    <a class="btn btn-danger" href="/taxi/eliminar_vehiculo/{{vehiculo.id}}">Eliminar</a>
                 </td>
             </tr>
         {% endfor %}

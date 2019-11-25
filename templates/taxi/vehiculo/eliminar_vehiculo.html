@@ -1,14 +1,14 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Eliminar Peliculas
+    Eliminar Vehiculos
 {% endblock %}
 
 {% block content %}
     <form method="POST">
         {% csrf_token %}
-        <h2>¿Deseas eliminar la Pelicula {{ pelicula.titulo }}?</h2>
+        <h2>¿Deseas eliminar el vehiculo {{ vehiculo.descripcion }}?</h2>
         <button class="btn btn-primary" type="submit">Eliminar</button>
-        <a class="btn btn-danger" href="{% url 'cinema:listar_peliculas' %}">Cancelar</a>
+        <a class="btn btn-danger" href="{% url 'taxi:listar_vehiculos' %}">Cancelar</a>
     </form>
 {% endblock %}

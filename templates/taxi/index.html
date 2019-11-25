@@ -1,17 +1,17 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Listar Actores
+    Listar Viajes
 {% endblock %}
 
 {% block content %}
     <div class="row">
-        {% for actor in actores %}
+        {% for viaje in viajes %}
             <div class="col-4 mb-4">
                 <div class="card card-center">
-                    <img src="{{ actor.imagenA.url }}" class="card-img-top mt-2" alt="">
+                    <img src="{{ libro.imagen.url }}" class="card-img-top mt-2" alt="">
                     <div class="card-body">
-                        <p class="card-text">{{ actor.nombres }}</p>
+                        <p class="card-text">{{ libro.titulo }}</p>
                     </div>
                 </div>
             </div>
